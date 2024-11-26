@@ -36,5 +36,9 @@ public interface ProjectService {
 
 
 
+    List<Project> searchProjects(String keyword, User user) throws Exception;
+
+
+
 
 }
