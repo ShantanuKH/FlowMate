@@ -2,9 +2,12 @@ package com.flowmate.controller;
 
 
 import com.flowmate.model.Chat;
+import com.flowmate.model.Invitation;
 import com.flowmate.model.Project;
 import com.flowmate.model.User;
+import com.flowmate.request.InviteRequest;
 import com.flowmate.response.MessageResponse;
+import com.flowmate.service.InvitationService;
 import com.flowmate.service.ProjectService;
 import com.flowmate.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +28,9 @@ public class ProjectController {
     @Autowired
     private  UserService userService;
 
+
+    @Autowired
+    private InvitationService invitationService;
 
     @GetMapping
     public ResponseEntity<List<Project>>getProjects(
@@ -135,6 +141,44 @@ public class ProjectController {
 
 
         return new ResponseEntity<>(chat, HttpStatus.OK);
+
+    }
+
+    //    To send the invitation
+
+    @PostMapping("/invite")
+    public ResponseEntity<MessageResponse> inviteProject(
+            @RequestBody InviteRequest req,
+            @RequestParam("Authorization")String jwt,
+            @RequestBody Project project
+    )throws Exception{
+
+        User user = userService.findUSerProfileByJwt(jwt);
+        invitationService.sendInvitation(req.getEmail(), req.getProjectId());
+        MessageResponse res=new MessageResponse("User Invitation sent");
+
+
+        return new ResponseEntity<>(res, HttpStatus.OK);
+
+    }
+
+
+//    Accept invitation project
+
+    @GetMapping("/accept_invitation")
+    public ResponseEntity<Invitation> inviteProject(
+            @RequestParam String token,
+            @RequestParam("Authorization")String jwt,
+            @RequestBody Project project
+    )throws Exception{
+
+        User user = userService.findUSerProfileByJwt(jwt);
+
+        Invitation invitation =  invitationService.acceptInvitation(token, user.getId());
+
+        projectService.addUserToProject(invitation.getProjectId(), user.getId());
+
+        return new ResponseEntity<>(invitation, HttpStatus.ACCEPTED);
 
     }
 
