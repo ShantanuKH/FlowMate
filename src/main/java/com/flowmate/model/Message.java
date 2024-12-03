@@ -18,17 +18,11 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)  // Automatically generate primary key
     private Long id;
 
-
-
-
     private String content;
     private LocalDateTime createdAt;
 
-
     @ManyToOne
     private Chat chat;
-
-
 
 //    One user can send many messages
     @ManyToOne

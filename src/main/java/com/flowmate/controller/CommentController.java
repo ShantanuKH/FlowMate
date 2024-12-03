@@ -61,6 +61,9 @@ return new ResponseEntity<>(res, HttpStatus.OK);
 
 
     }
+
+
+//    If we want all the comment
 @GetMapping("/{issueId")
 public ResponseEntity<List<Comment>> getCommentByIssueId(
         @PathVariable Long issueId){
