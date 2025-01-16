@@ -6,6 +6,7 @@ import com.flowmate.repository.UserRepository;
 import com.flowmate.request.LoginRequest;
 import com.flowmate.response.AuthResponse;
 import com.flowmate.service.CustomUserDetailsImplementation;
+import com.flowmate.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +34,9 @@ public class AuthController {
     private CustomUserDetailsImplementation customUserDetailsImplementation;
 
 
+    private SubscriptionService subscriptionService''
+
+
     @PostMapping("/signup")
 
 //    If user already exists
@@ -54,6 +58,11 @@ public class AuthController {
         createdUser.setFullName(user.getFullName());
 
         User savedUser=userRepository.save(createdUser);
+
+//        Create Free subscription on creating account or Say signUp
+
+        subscriptionService.createSubscription(savedUser);
+
 
 //        Authentication
 
