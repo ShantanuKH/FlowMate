@@ -4,11 +4,14 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import org.hibernate.annotations.ManyToAny;
 
 import java.time.LocalDateTime;
 
-@Data
+
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 
@@ -21,6 +24,7 @@ public class Message {
     private String content;
     private LocalDateTime createdAt;
 
+//   Pehele @ManyToAny tha
     @ManyToOne
     private Chat chat;
 

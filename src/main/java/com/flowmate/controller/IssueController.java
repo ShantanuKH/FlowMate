@@ -29,7 +29,7 @@ public class IssueController {
     private UserService userService;
 
 
-    @GetMapping("/{issueId")
+    @GetMapping("/{issueId}")
     public ResponseEntity<Issue> getIssueById(@PathVariable Long issueId) throws Exception {
         return ResponseEntity.ok(issueService.getIssueById(issueId));
     }
@@ -71,7 +71,7 @@ public class IssueController {
     }
 
 
-    @DeleteMapping("/{issueId")
+    @DeleteMapping("/{issueId}")
     public ResponseEntity<MessageResponse> deleteIssue(@PathVariable Long issueId, @RequestHeader("Authorization") String token) throws Exception{
 
         User user = userService.findUSerProfileByJwt(token);
@@ -84,7 +84,7 @@ public class IssueController {
         return ResponseEntity.ok(res);
     }
 
-   @PutMapping("/{issueId/assignee/{userId")
+   @PutMapping("/{issueId}/assignee/{userId}")
     public ResponseEntity<Issue> addUserToIssue(@PathVariable Long issueId,
                                                 @PathVariable Long userId) throws Exception{
 

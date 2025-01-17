@@ -6,10 +6,13 @@ import com.flowmate.model.User;
 import com.flowmate.repository.IssueRepository;
 import com.flowmate.request.IssueRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@Service
 public class IssueServiceImplementation implements IssueService {
 
 

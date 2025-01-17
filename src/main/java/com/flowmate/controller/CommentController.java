@@ -46,7 +46,7 @@ public class CommentController {
     }
 
 
-    @DeleteMapping("/{commentId")
+    @DeleteMapping("/{commentId}")
     public ResponseEntity<MessageResponse> deleteComment(
             @PathVariable Long commentId,
             @RequestHeader("Authorization")
@@ -64,7 +64,7 @@ return new ResponseEntity<>(res, HttpStatus.OK);
 
 
 //    If we want all the comment
-@GetMapping("/{issueId")
+@GetMapping("/{issueId}")
 public ResponseEntity<List<Comment>> getCommentByIssueId(
         @PathVariable Long issueId){
         List<Comment> comments = commentService.findCommentByIssueId(issueId);

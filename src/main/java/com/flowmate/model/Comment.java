@@ -24,7 +24,8 @@ public class Comment {
     private String content;
     private LocalDateTime createdDateTime;
 
-    @ManyToAny
+
+    @ManyToOne
     private User user;
 
     @ManyToOne

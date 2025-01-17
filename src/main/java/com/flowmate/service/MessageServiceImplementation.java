@@ -7,11 +7,8 @@ import com.flowmate.repository.MessageRepository;
 import com.flowmate.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
-
-
 
 
 
@@ -37,15 +34,17 @@ public class MessageServiceImplementation implements MessageService{
 
         Chat chat = projectService.getProjectById(projectId).getChat();
 
-        Message message = new Message();
+//        Message message = new Message();
+        com.flowmate.model.Message message = new com.flowmate.model.Message();
         message.setContent(content);
         message.setSender(sender);
         message.setCreatedAt(LocalDateTime.now());
         message.setChat(chat);
-        Message savedMessage = messageRepository.save(message);
-
+//        Message savedMessage = messageRepository.save(message);
+        com.flowmate.model.Message savedMessage = messageRepository.save(message);
         chat.getMessages().add(savedMessage);
-        
+
+
         return savedMessage;
     }
 
@@ -53,8 +52,6 @@ public class MessageServiceImplementation implements MessageService{
     public List<Message> getMessageByProjectId(Long projectId) throws Exception {
         Chat chat = projectService.getChatByProjectId(projectId);
         List<Message> findByChatIdOrderByCreatedAtAsc= messageRepository.findByChatIdOrderByCreatedAtAsc(chat.getId());
-
-
 
 
         return findByChatIdOrderByCreatedAtAsc;

@@ -5,9 +5,12 @@ import com.flowmate.model.Issue;
 import com.flowmate.model.User;
 import com.flowmate.request.IssueRequest;
 import jdk.jshell.spi.ExecutionControl;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
+
 
 public interface IssueService {
 

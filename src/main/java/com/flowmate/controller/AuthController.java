@@ -34,7 +34,7 @@ public class AuthController {
     private CustomUserDetailsImplementation customUserDetailsImplementation;
 
 
-    private SubscriptionService subscriptionService''
+    private SubscriptionService subscriptionService;
 
 
     @PostMapping("/signup")
