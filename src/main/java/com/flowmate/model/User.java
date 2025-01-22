@@ -1,6 +1,7 @@
 package com.flowmate.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,6 +23,11 @@ public class User {
 
     private String fullName;
     private String email;
+
+//    Whenever we test the GetProfile then we are getting the password too, that we dont want for security purpose and so we use this Spring JSON property
+//    By doing so we will not get password in the front end
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
 

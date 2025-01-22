@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 
 @Service
-
 public class SubscriptionServiceImplementation implements SubscriptionService {
 
     @Autowired
@@ -31,7 +30,9 @@ public class SubscriptionServiceImplementation implements SubscriptionService {
         subscription.setGetSubscriptionEndDate(LocalDate.now().plusMonths(12));
         subscription.setValid(true);
         subscription.setPlanType(PlanType.FREE);
-        return null;
+
+
+        return subscriptionRepository.save(subscription);
     }
 
     @Override

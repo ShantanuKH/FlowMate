@@ -35,6 +35,13 @@ public class JwtProvider {
 //     Get Email from JWT Token
 
     public static String getEmailFromToken(String jwt){
+
+//        Whenever we get the jwt token then we will get it with the bearer keyword from which we will get our actual token, We need to remove the seven character, B-E-A-R-E-R-_
+//        So, To remove this we need to use substring
+
+            jwt = jwt.substring(7);
+
+
         Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
 
         return String.valueOf(claims.get("email"));

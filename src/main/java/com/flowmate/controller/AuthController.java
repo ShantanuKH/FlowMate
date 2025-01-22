@@ -33,7 +33,7 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsImplementation customUserDetailsImplementation;
 
-
+    @Autowired
     private SubscriptionService subscriptionService;
 
 

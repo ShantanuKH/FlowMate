@@ -32,6 +32,7 @@ public class ProjectServiceImplementation implements ProjectService {
 
     @Autowired
     private ChatService chatService;
+    private Long projectId;
 
 
     @Override
